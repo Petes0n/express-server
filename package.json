@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon -r dotenv/config server.js",
-     "build": "prisma generate"
+     "build": "npx prisma generate && tsc"
   },
   "author": "Pete_son",
   "license": "MIT",
