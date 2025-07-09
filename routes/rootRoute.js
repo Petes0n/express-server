@@ -1,0 +1,32 @@
+import { Router} from "express";
+import registerMusicianRouter from "./onboarding/registerMuscian.js";
+import registerOrgRouter from "./onboarding/registerOrg.js";
+import musicianAuth from "./auth/loginMusician.js";
+import orgAuth from "./auth/loginOrg.js";
+import createGig from "./common/createGig.js";
+import gigs from "./common/getGigs.js";
+import availableMusician from "./common/musicianAvailable.js";
+import orgAvailable from "./common/institutionAvailable.js";
+import gigById from "./common/gigsByOrg.js";
+import uploadAvatar from "./common/upload.js";
+import deleteGig from "./common/deleteGig.js";
+import test from "./auth/forWeb.js";
+import Logout from "./auth/logOut.js";
+import ResetPassword from "./auth/resetPassword.js";
+const router = Router();
+router.use(registerMusicianRouter);
+router.use(registerOrgRouter);
+router.use(musicianAuth);
+router.use(orgAuth);
+router.use(createGig);
+router.use(gigs);
+router.use(availableMusician);
+router.use(orgAvailable);
+router.use(gigById);
+router.use(uploadAvatar);
+router.use(deleteGig);
+router.use(Logout);
+router.use(ResetPassword)
+//For testing on the web.
+router.use(test);
+export default router;

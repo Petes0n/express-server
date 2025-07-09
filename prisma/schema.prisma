@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  //local database.
+  url      = env("LOCAL_DATABASE_URL")
+  // online database config.
+  // url      = env("ONLINE_DATABASE_URL")
+}
+
+model Musician {
+  ID              Int      @id @default(autoincrement())
+  fullName        String
+  areaOfExpertise String
+  avatarUrl       String?
+  userType        String   @default("musician")
+  password        String
+  email           String   @unique
+  longitude       Float
+  latitude        Float
+  locationName    String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Organization {
+  ID           Int      @id @default(autoincrement())
+  orgName      String   @unique
+  password     String
+  email        String   @unique
+  latitude     Float
+  longitude    Float
+  locationName String
+  avatarUrl    String
+  gigs         Gig[]
+  userType     String   @default("organization")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Gig {
+  ID                 Int          @id @default(autoincrement())
+  organization       Organization @relation(fields: [orgID], references: [ID])
+  orgID              Int
+  duration           String
+  gigType            String
+  latitude           Float
+  longitude          Float
+  locationName       String
+  musicianTypeNeeded String
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+}
