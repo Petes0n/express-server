@@ -59,3 +59,23 @@ model Gig {
   createdAt          DateTime     @default(now())
   updatedAt          DateTime     @updatedAt
 }
+
+model Job {
+  id          String   @id @default(cuid())
+  title       String
+  company     String
+  location    String
+  type        String
+  salary      String
+  budget      String
+  posted      String
+  postedDate  String
+  date        String
+  genre       String
+  category    String
+  experience  String
+  description String
+  urgent      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

@@ -13,6 +13,7 @@ import deleteGig from "./common/deleteGig.js";
 import test from "./auth/forWeb.js";
 import Logout from "./auth/logOut.js";
 import ResetPassword from "./auth/resetPassword.js";
+import jobRoutes from "./jobRoutes.js";
 const router = Router();
 router.use(registerMusicianRouter);
 router.use(registerOrgRouter);
@@ -26,7 +27,8 @@ router.use(gigById);
 router.use(uploadAvatar);
 router.use(deleteGig);
 router.use(Logout);
-router.use(ResetPassword)
+router.use(ResetPassword);
+router.use(jobRoutes);
 //For testing on the web.
 router.use(test);
 export default router;

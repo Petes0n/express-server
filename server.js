@@ -33,6 +33,7 @@ const PORT = process.env.PORT || 8080;
 // .then(() => {
 //   console.log('Migrations applied successfully');
   
+app.use(routes);
  
   app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
@@ -44,4 +45,3 @@ const PORT = process.env.PORT || 8080;
   // });
 //  let databaseURI = process.env.NODE_ENV === "Development" ? localDatabaseURL : onlineDatabaseURL;
 //  export{databaseURI}
- app.use(routes);
